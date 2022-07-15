@@ -1,6 +1,9 @@
 <?php
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\searchController;
+
 use App\Http\Controllers\CartController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,6 +25,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [BookController::class, 'index'])->name('home');
+Route::get('/search', [searchController::class, 'search'])->name('search')->middleware('auth');
+Route::post('/search', [searchController::class, 'getSearch'])->name('getSearch');
 
 
 
