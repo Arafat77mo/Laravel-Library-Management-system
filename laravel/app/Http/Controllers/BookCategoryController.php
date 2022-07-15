@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book_Category;
+use App\Models\BookCategory;
 use Illuminate\Http\Request;
 
 class BookCategoryController extends Controller
@@ -14,7 +14,7 @@ class BookCategoryController extends Controller
      */
     public function index()
     {
-        $catigory=Book_Category::all();
+        $catigory=BookCategory::all();
 
         return view ('user.layout',['catdata'=>$catigory]);
     }

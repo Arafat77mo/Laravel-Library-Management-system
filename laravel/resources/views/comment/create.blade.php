@@ -5,34 +5,41 @@
 
 
 {!! Form::open(['route' => 'comment.store']) !!}
-<label for="comment">Comments:</label>
-<textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
-<button type="submit" class="btn btn-primary" >Submit</button>
+<label  class='ms-3' for="comment">Comments:</label>
+<textarea class="form-control m-3" rows="5" id="comment" name="comment"></textarea>
+@foreach ($errors->all() as $error)
+<li class="text-danger">{{ $error }}</li>
+@endforeach
+<button type="submit" class="btn btn-primary ms-5" >Submit</button>
 
 {!! Form::close() !!}
+
+
+
 @endsection
 
 
 @section('comment')
-<div class="card" >
-    {{-- @if (isset($comment)) --}}
 
-@foreach($data as $comment)
+    @if (isset($data))
+
+@foreach($data as $comment) 
+<div class="card m-5"  >
+
+   {{-- <h5 class="card-title">{{$comment->user->name}}</h5>  --}}
 
 
+   <h6 class="card-subtitle mb-2 text-muted">{{$comment['comment']}}</h6> 
 
 
-{{-- <h6 class="card-subtitle mb-2 text-muted">{{$data['comment']}}</h6> --}}
-
-<h5 class="card-title">{{$comment->comment}}</h5>
-
-{{-- {!! Form::open(['route' => ['comment.destroy',$comments->user_id],'method' => 'delete']) !!}
+   {!! Form::open(['route' => ['comment.destroy',$comment->user_id],'method' => 'delete']) !!}
       <button type="submit" class="btn btn-danger">Delete</button>
-      {!! Form::close() !!} --}}
-
-@endforeach
-  {{-- @endif --}}
-</div>
+      {!! Form::close() !!} 
+ </div> 
+   @endforeach   
+  @endif 
+ 
+  
 
 
 @endsection

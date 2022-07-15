@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\comment;
@@ -29,6 +30,7 @@ class CommentController extends Controller
     public function create()
     {
 return view('comment.create');
+return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]); 
     }
 
     /**
@@ -39,12 +41,15 @@ return view('comment.create');
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'comment' => 'required'
+        ]);
         // Auth::user()->comments()->create($request->all());  
     $user = new Comment();
 
         $user->comment = $request->post('comment');
         $user->user_id = Auth::id();
-
+        $user->book_id = $request->post('book_id');
         $user->save();
 
         return redirect()->back(); 
@@ -60,8 +65,8 @@ return view('comment.create');
      */
     public function show($id)
     {
-        // $comments=comment::all();
-        // return view("comment.create",['comments'=>$comments]);  
+        $comments=comment::all();
+        return view("comment.create",['comments'=>$comments]);  
       }
 
     /**
