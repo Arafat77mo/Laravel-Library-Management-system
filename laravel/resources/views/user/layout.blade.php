@@ -36,6 +36,9 @@
             <div class="container ">
 
                 {{-- left side in navbar --}}
+                <a class="navbar-brand" href="{{ route('getprofile')}}">
+                  my Profile
+              </a>
                 <a class="navbar-brand me-4" href="{{route('home')}}"> Mktabty</a>
 
                 <a class="navbar-brand me-4 " href="{{ route('cart.list') }}">
