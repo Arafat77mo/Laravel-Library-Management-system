@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Providers;
+use App\Models\Book_Category;
+use App\Models\Book;
 use Illuminate\Support\Facades\Schema;
 
 
@@ -29,6 +31,22 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
        Paginator::useBootstrap();
+
+       view()->composer('user.layout',function($view){
+        $view->with('cat',Book_Category::all());
+
+       });
+
+
+       view()->composer('user.layout',function($viewe){
+        $viewe->with('rate',Book::all());
+
+       });
+
+
+
+     
+
 
      }
 }

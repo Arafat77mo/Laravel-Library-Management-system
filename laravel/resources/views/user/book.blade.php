@@ -2,10 +2,14 @@
 @section('content')
 
 <div class ="container text-center ">
+
+
+
 <div class="row col ">
+
 @foreach ($data as $book)
 
-<div class="card col-4 m-1 " style="width: 18rem;">
+<div class="card col-4 m-1 {{$book['category_id']}}" style="width: 18rem;">
     <a href=""><img src="https://fakeimg.pl/350x200/ff0000,128/000,255" class="card-img-top" alt="..."> </a>
     <div class="card-body">
       <h5 class="card-title">{{$book['title']}}</h5>
@@ -27,13 +31,13 @@
   </div>
 
   @endforeach
-<div class="m-4 ms-5 aligns-items-center justify-content-center" >
+<div class="m-4 ms-5 d-flex justify-content-center" >
     <p class="text-center">  {!!$data->links()!!}</p>
 </div>
 
 </div>
 
 </div>
-{{-- </div> --}}
+
 
 @endsection
