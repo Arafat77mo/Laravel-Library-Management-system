@@ -17,7 +17,6 @@ class AddStatusToUsersTable extends Migration
             $table->integer('status')->default(1);
         });        
     }
-
     /**
      * Reverse the migrations.
      *
