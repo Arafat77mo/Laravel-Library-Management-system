@@ -100,7 +100,7 @@
 
 
 
-        {{-- order by section start --}}
+        <!-- {{-- order by section start --}}
 
 
             {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 me-5"   >
@@ -182,7 +182,7 @@
                       </div>
                     </div>
               </div> --}}
-          {{-- order by section end --}}
+          {{-- order by section end --}} -->
 
 
 
@@ -204,6 +204,7 @@
     </ul>
   </div>
 
+  <a href="{{Route('search')}}"><button type="submit" class="btn btn-primary">Search</button></a> 
 
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       latest
@@ -219,6 +220,13 @@
   </div>
     </div>
 
+
+    <!-- search -->
+
+    
+            
+       
+    
         <main class="py-4 row  ">
 
         <div class="col-3 m-0 h-1000 bg-primary">
