@@ -1,12 +1,19 @@
 @extends('layouts.app')
 
+
 @section('cooment')
+
+
+
 
 
 
 {!! Form::open(['route' => 'comment.store']) !!}
 <label  class='ms-3' for="comment">Comments:</label>
+
 <textarea class="form-control m-3" rows="5" id="comment" name="comment"></textarea>
+
+
 @foreach ($errors->all() as $error)
 <li class="text-danger">{{ $error }}</li>
 @endforeach
@@ -21,9 +28,9 @@
 
 @section('comment')
 
-    @if (isset($data))
+    @if (isset($comments))
 
-@foreach($data as $comment) 
+@foreach($comments as $comment) 
 <div class="card m-5"  >
 
    {{-- <h5 class="card-title">{{$comment->user->name}}</h5>  --}}

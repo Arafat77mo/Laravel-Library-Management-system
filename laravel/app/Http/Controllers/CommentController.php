@@ -29,8 +29,10 @@ class CommentController extends Controller
      */
     public function create()
     {
-return view('comment.create');
-return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]); 
+   return view('comment.create');
+
+ 
+   return view('comment.create',['data'=>comment::all()]); 
     }
 
     /**
@@ -45,7 +47,7 @@ return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]);
             'comment' => 'required'
         ]);
         // Auth::user()->comments()->create($request->all());  
-    $user = new Comment();
+    $user = new comment();
 
         $user->comment = $request->post('comment');
         $user->user_id = Auth::id();
@@ -56,7 +58,7 @@ return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]);
 
     
     }
-
+//    
     /**
      * Display the specified resource.
      *

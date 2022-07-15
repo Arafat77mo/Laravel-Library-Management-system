@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
-    protected $fillable = ['book'];
+   
+    public function comment(){
 
-    public function author(){
-
-return $this->belongsTo(author::class);
-
-
-    }
+        return $this->belongsTo(comment::class);
+        
+        
+            }
+   
 }

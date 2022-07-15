@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CommentController;
@@ -22,8 +23,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [BookController::class, 'index'])->name('home');
+Route::get('/home', [BookController::class, 'index'])->name('home')->middleware('auth');
 
+Route::resource('show','App\Http\Controllers\BookController')->middleware('auth');
 
 
 
@@ -31,3 +33,13 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 Route::resource('comment','App\Http\Controllers\CommentController')->middleware('auth');
+
+
+////// cart
+Route::get('/', [BookController::class, 'index'])->name('books.list');
+Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
+Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
+Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
+Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
+Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
+

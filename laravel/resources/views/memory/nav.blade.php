@@ -116,7 +116,9 @@
 
             </main>
 
-
+            <div class="col-8">
+                @yield('detiles')
+                </div>
 
 
 
