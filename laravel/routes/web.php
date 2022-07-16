@@ -1,6 +1,6 @@
 <?php
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\BookCategoryController;
+// use App\Http\Controllers\BookCategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,9 +21,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [BookController::class, 'index'])->name('home');
+Route::get('/home', [BookController::class, 'index'])->name('home')->middleware('auth');
 
-
+Route::get('category/{id}', [BookController::class, 'showcat']);
 
 
 Route::group(['prefix' => 'admin'], function () {

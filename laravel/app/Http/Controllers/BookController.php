@@ -45,21 +45,35 @@ class BookController extends Controller
 
     }
 
+
+
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function showbycat($id)
+    public function showcat($id)
     {
+   
 
-      
+
+
+            $catigory = Book_Category::where('id',$id)->first();
+             $catbooks=Book::where('category_id', $catigory->id)->paginate(2);
+             return view ('user.catigory',['catbookdata'=>$catbooks]);
+            //  return response()->json( $catbooks);
 
 
 
 
 
     }
+
+
+
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -110,4 +124,7 @@ class BookController extends Controller
     {
         //
     }
+
+
+
 }

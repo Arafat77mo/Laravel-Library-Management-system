@@ -120,7 +120,7 @@
     </button>
 
     <ul class="dropdown-menu">
-        <form method="get" action="{{URL::current()}}">
+        <form method="get" action="{{route('home')}}">
       <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
 
       @foreach (range(1,5) as $rate)
@@ -152,7 +152,7 @@
 
 
 
-<form method="get" action="{{URL::current()}}">
+<form method="get" action="{{route('home')}}">
     <button type="submit"  name="latest" class="btn btn-primary ">latest</button>
 </form>
 
@@ -166,9 +166,25 @@
 
         <main class="py-4 row  ">
 
-        <div class="col-3 m-0  ">
+        <div class="col-3 m-4 fs-4 ">
 
-            
+        
+
+
+
+              <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                    @foreach ($user as $bookuser)
+                  <li class="list-group-item"><a href="{{url('category/'.$bookuser->id)}}">  {{$bookuser->type}}</a></li>
+                  @endforeach
+                  {{-- <li class="list-group-item"><strong>Joined: </strong>{{$user->created_at->diffForHumans()}}</li> --}}
+
+                </ul>
+              </div>
+
+
+
+
           </div>
 
 
@@ -184,5 +200,10 @@
 
 
     </div>
+
+
+
+
+
 </body>
 </html>
