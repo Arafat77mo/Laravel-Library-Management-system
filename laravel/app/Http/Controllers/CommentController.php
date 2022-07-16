@@ -54,8 +54,8 @@ class CommentController extends Controller
         $user->book_id = $request->post('book_id');
         $user->save();
 
-        return redirect()->back(); 
-
+        // return redirect()->back(); 
+        return redirect()->route('comment.create');
     
     }
 //    
@@ -67,8 +67,8 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        $comments=comment::all();
-        return view("comment.create",['comments'=>$comments]);  
+        $comment=comment::all();
+        return view("comment.create",['comments'=>$comment]);  
       }
 
     /**
