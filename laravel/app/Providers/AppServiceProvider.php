@@ -3,6 +3,7 @@
 namespace App\Providers;
 use Illuminate\Support\Facades\Schema;
 
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\ServiceProvider;
 // to make pagination
@@ -30,5 +31,8 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
        Paginator::useBootstrap();
 
+       view()->composer('user.layout',function($view){
+        $view->with('user',Auth::user());
+       });
      }
 }

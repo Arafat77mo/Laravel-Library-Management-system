@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [BookController::class, 'index'])->name('home');
+Route::get('/home', [BookController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/search', [searchController::class, 'search'])->name('search')->middleware('auth');
 Route::post('/search', [searchController::class, 'getSearch'])->name('getSearch');
 
@@ -46,7 +46,7 @@ Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.up
 Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
 Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
 
-// update profile 
+// update profile
 Route::get('myprofile',[ProfileController::class,'index'])->name('getprofile');
 Route::get('getprofile/{id}',[ProfileController::class,'edit'])->name('updateprofile');
 Route::put('updateprof/{id}',[ProfileController::class,'update'])->name('updatee');

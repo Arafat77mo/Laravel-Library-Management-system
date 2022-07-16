@@ -102,93 +102,6 @@
 
 
 
-
-        <!-- {{-- order by section start --}}
-
-
-            {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 me-5"   >
-                <button class="btn btn-primary me-md-2" type="button"   data-bs-toggle="modal" data-bs-target="#exampleModal">rate</button>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <a href="">
-                            <i class="fa-solid fa-star checked "></i>
-                            <i class="fa-solid fa-star checked "></i>
-                            <i class="fa-solid fa-star checked "></i>
-                            <i class="fa-solid fa-star checked "></i>
-                            <i class="fa-solid fa-star checked "></i>
-
-                         </a>
-
-                         <a href="" class="m-2">
-                            <i class="fa-solid fa-star checked "></i>
-                            <i class="fa-solid fa-star checked "></i>
-                            <i class="fa-solid fa-star checked "></i>
-                            <i class="fa-solid fa-star checked "></i>
-                            <i class="fa-solid fa-star nochecked "></i>
-
-
-
-                         </a>
-
-                         <a href="" class="m-2">
-                            <i class="fa-solid fa-star checked "></i>
-                            <i class="fa-solid fa-star checked "></i>
-                            <i class="fa-solid fa-star checked "></i>
-                            <i class="fa-solid fa-star nochecked "></i>
-                            <i class="fa-solid fa-star nochecked "></i>
-
-
-
-                         </a>
-
-                         <a href="" class="m-2">
-                            <i class="fa-solid fa-star checked "></i>
-                            <i class="fa-solid fa-star checked "></i>
-                            <i class="fa-solid fa-star nochecked "></i>
-                            <i class="fa-solid fa-star nochecked "></i>
-                            <i class="fa-solid fa-star nochecked "></i>
-
-                         </a>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-
-
-                  <button class="btn btn-primary me-md-2" type="button"   data-bs-toggle="modal" data-bs-target="#exampleModal">latest</button>
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                          xzccccxzczsf
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-              </div> --}}
-          {{-- order by section end --}} -->
-
-
-
 <!-- Example single danger button -->
 <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 me-5">
     <p class="pt-2">ordered by </p>
@@ -207,7 +120,7 @@
     </ul>
   </div>
 
-  <a href="{{Route('search')}}"><button type="submit" class="btn btn-primary">Search</button></a> 
+  <a href="{{Route('search')}}"><button type="submit" class="btn btn-primary">Search</button></a>
 
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       latest
@@ -226,19 +139,20 @@
 
     <!-- search -->
 
-    
-            
-       
-    
+
+
+
+
         <main class="py-4 row  ">
 
-        <div class="col-3 m-0 h-1000 bg-primary">
-            {{-- <ul class="list-group">
-                @foreach($catdata as data)
-                <li class="list-group-item">{{$data['Type']}}</li>
-               @endforeach
-              </ul> --}}
+        <div class="col-3 m-4">
 
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"> Welcom {{$user->name}}</li>
+                  <li class="list-group-item"><strong>Joined: </strong>{{$user->created_at->diffForHumans()}}</li>
+                </ul>
+              </div>
           </div>
 
 
