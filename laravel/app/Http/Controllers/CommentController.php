@@ -19,7 +19,7 @@ class CommentController extends Controller
     public function index()
     {
          
-        return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]); 
+        // return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]); 
         // return  $comments ; 
     }
     /**
@@ -28,11 +28,13 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
+
+
    return view('comment.create');
 
  
-   return view('comment.create',['data'=>comment::all()]); 
     }
 
     /**
@@ -54,10 +56,8 @@ class CommentController extends Controller
         $user->book_id = $request->post('book_id');
         $user->save();
 
-        // return redirect()->back(); 
-        return redirect()->route('comment.create');
-    
-    }
+        return redirect()->back(); 
+   }
 //    
     /**
      * Display the specified resource.
@@ -66,7 +66,7 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    { 
         $comment=comment::all();
         return view("comment.create",['comments'=>$comment]);  
       }
@@ -100,9 +100,9 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user_id)
+    public function destroy($id)
     {
-        $comments =comment::find($user_id)->delete();
+        $comments =comment::find($id)->delete();
 
         return redirect()->back(); 
     }

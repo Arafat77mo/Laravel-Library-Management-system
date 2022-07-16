@@ -24,7 +24,7 @@
       <div class="row justify-content-between">
       <div class ="col-4 fw-bold">${{$book['price']}}</div>
 
-      <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('cart.store',$book->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" value="{{ $book->id }}" name="id">
         <input type="hidden" value="{{$book['title']}}" name="name">

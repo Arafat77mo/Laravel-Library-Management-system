@@ -66,8 +66,14 @@
       <div class="row justify-content-between">
       <div class ="col-4 fw-bold">${{$book['price']}}</div>
 
-      <a href="#" class="col-4 btn btn-warning ">Buy </a>
-      </div>
+      <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" value="{{ $book->id }}" name="id">
+        <input type="hidden" value="{{$book['title']}}" name="name">
+        <input type="hidden" value={{$book['price']}} name="price">
+        <input type="hidden" value="1" name="quantity">
+        <button class="col-6 btn btn-warning" type="submit" >Addtocart</button>
+      </form>      </div>
 
     </div>
   </div>

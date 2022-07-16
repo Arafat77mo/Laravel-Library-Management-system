@@ -15,10 +15,18 @@ class comment extends Model
         
 ];
 
-public function books(){
+public function book(){
 
-    return $this->hasMany(Book::class);
+    return $this->belongsTo(Book::class);
     
     
         }
+
+
+public function user(){
+
+   return $this->belongsTo(User::class);
+            
+            
+                }
 }

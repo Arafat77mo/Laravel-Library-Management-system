@@ -1,16 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\comment;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     public function cartList()
     {
         $cartItems = \Cart::getContent();
+        $comments = comment::all();
+        $users = User::all();
+        
         //  return($cartItems);
-        return view('cart', compact('cartItems'));
+        return view('cart', compact('cartItems','comments','users'));
+
     }
 
     public function addToCart(Request $request)
