@@ -29,6 +29,9 @@
         .category{
             text-decoration: none;
             color: black;
+        .fav:hover{
+          color: red;
+
         }
     </style>
     {{-- font aswoame cdn --}}
@@ -40,9 +43,12 @@
             <div class="container ">
 
                 {{-- left side in navbar --}}
+                <a class="navbar-brand" href="{{ route('getprofile')}}">
+                  my Profile
+              </a>
                 <a class="navbar-brand me-4" href="{{route('home')}}"> Mktabty</a>
 
-                <a class="navbar-brand me-4 " href="{{ url('/') }}">
+                <a class="navbar-brand me-4 " href="{{ route('cart.list') }}">
                     {{ config('app.name ', 'My books') }}
                 </a>
                 <a class="navbar-brand me-4" href="{{ url('/') }}">
@@ -108,6 +114,91 @@
 
 
 
+        <!-- {{-- order by section start --}}
+
+
+            {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 me-5"   >
+                <button class="btn btn-primary me-md-2" type="button"   data-bs-toggle="modal" data-bs-target="#exampleModal">rate</button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <a href="">
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+
+                         </a>
+
+                         <a href="" class="m-2">
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star nochecked "></i>
+
+
+
+                         </a>
+
+                         <a href="" class="m-2">
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star nochecked "></i>
+                            <i class="fa-solid fa-star nochecked "></i>
+
+
+
+                         </a>
+
+                         <a href="" class="m-2">
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star nochecked "></i>
+                            <i class="fa-solid fa-star nochecked "></i>
+                            <i class="fa-solid fa-star nochecked "></i>
+
+                         </a>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <button class="btn btn-primary me-md-2" type="button"   data-bs-toggle="modal" data-bs-target="#exampleModal">latest</button>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                          xzccccxzczsf
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div> --}}
+          {{-- order by section end --}} -->
+
+
 
 
 <!-- Example single danger button -->
@@ -148,6 +239,7 @@
     </ul>
 </div>
 
+  <a href="{{Route('search')}}"><button type="submit" class="btn btn-primary">Search</button></a> 
 
 
 
@@ -163,6 +255,15 @@
 
 
 
+
+
+
+    <!-- search -->
+
+    
+            
+       
+    
 
         <main class="py-4 row  ">
 

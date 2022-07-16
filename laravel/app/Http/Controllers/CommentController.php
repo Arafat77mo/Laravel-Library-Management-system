@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Book_Category;
-use  App\Models\Book;
-use  App\Models\author;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\comment;
 
-class BookController extends Controller
+use Illuminate\Support\Facades\Auth;
+
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,51 +18,21 @@ class BookController extends Controller
      */
     public function index()
     {
-            // $bookdata=Book::all();
-
-            $catigories=Book_Category::select('type', 'id')->get();
-
-            $bookdata=Book::query()->with('Book_Category');
-
-
-         if (request()->has('filter')&& data_get(request(),'filter.rate')){
-
-            $bookdata=Book::whereIn('rate',data_get(request(),'filter.rate'))->paginate(2);
-
-         }elseif (request()->has('latest')){
-            $bookdata=Book::orderby('created_at','desc')->paginate(2);
-
-         }elseif (request()->has('filter')&& data_get(request(),'filter.categories')){
-
-            $bookdata->whereIn('category_id',data_get(request(),'filter.categories'))->paginate(2);
-         }
-         else{
-               $bookdata=Book::paginate(2);
-         }
-
-
-
-        //  $bookdata=Book::paginate(2);
-           return view ('user.book',['data'=>$bookdata
-                                  ,'catigory'=> $catigories]);
-        //  return response()->json($bookdata);
-
+         
+        return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]); 
+        // return  $comments ; 
     }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function showbycat($id)
+    public function create()
     {
+   return view('comment.create');
 
-      
-
-
-
-
-
+ 
+   return view('comment.create',['data'=>comment::all()]); 
     }
 
     /**
@@ -71,22 +43,33 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validated = $request->validate([
+            'comment' => 'required'
+        ]);
+        // Auth::user()->comments()->create($request->all());  
+    $user = new comment();
 
+        $user->comment = $request->post('comment');
+        $user->user_id = Auth::id();
+        $user->book_id = $request->post('book_id');
+        $user->save();
+
+        // return redirect()->back(); 
+        return redirect()->route('comment.create');
+    
+    }
+//    
     /**
      * Display the specified resource.
      *
-
-
-
-
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-    }
+        $comment=comment::all();
+        return view("comment.create",['comments'=>$comment]);  
+      }
 
     /**
      * Show the form for editing the specified resource.
@@ -117,8 +100,10 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user_id)
     {
-        //
+        $comments =comment::find($user_id)->delete();
+
+        return redirect()->back(); 
     }
 }
