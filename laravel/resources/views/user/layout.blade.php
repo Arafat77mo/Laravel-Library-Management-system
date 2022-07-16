@@ -113,9 +113,7 @@
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
 
-      @foreach ($data as $rate)
-      <li><a class="dropdown-item" href="#">{{$rate['rate']}} stars</a></li>
-      @endforeach
+      
 
     </ul>
   </div>
@@ -149,8 +147,11 @@
 
             <div class="card" style="width: 18rem;">
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item"> Welcom {{$user->name}}</li>
-                  <li class="list-group-item"><strong>Joined: </strong>{{$user->created_at->diffForHumans()}}</li>
+                    @foreach ($user as $bookuser)
+                  <li class="list-group-item"><a href="{{url('category/'.$bookuser->id)}}">  {{$bookuser->type}}</a></li>
+                  @endforeach
+                  {{-- <li class="list-group-item"><strong>Joined: </strong>{{$user->created_at->diffForHumans()}}</li> --}}
+
                 </ul>
               </div>
           </div>
