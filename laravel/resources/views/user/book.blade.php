@@ -9,7 +9,7 @@
     <div class="card-body">
       <h5 class="card-title">{{$book['title']}}</h5>
 
-      <p class="card-text">{{$book['description']}}</p>
+      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis dolorum sunt.</p>
 
          <div class="row justify-content-between">
          <p style="color: maroon" class="col-5 fw-bold">rate {{$book['rate']}}  stars</p>
