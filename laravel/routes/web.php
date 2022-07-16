@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookCategoryController;
 use App\Http\Controllers\searchController;
 
 use App\Http\Controllers\CartController;

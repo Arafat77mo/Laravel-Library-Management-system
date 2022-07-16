@@ -26,6 +26,9 @@
         .nochecked{
             color:black;
         }
+        .category{
+            text-decoration: none;
+            color: black;
         .fav:hover{
           color: red;
 
@@ -102,6 +105,10 @@
                 </div>
             </div>
         </nav>
+
+
+
+
 
 
 
@@ -193,6 +200,7 @@
 
 
 
+
 <!-- Example single danger button -->
 <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 me-5">
     <p class="pt-2">ordered by </p>
@@ -201,31 +209,53 @@
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       rate
     </button>
+
     <ul class="dropdown-menu">
+        <form method="get" action="{{URL::current()}}">
       <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
 
-      @foreach ($data as $rate)
-      <li><a class="dropdown-item" href="#">{{$rate['rate']}} stars</a></li>
-      @endforeach
+      @foreach (range(1,5) as $rate)
+       @php
+         $checked =[];
+         if(isset($_GET['filter'])){
+            $checked =$_GET['filter'];
 
+         }
+       @endphp
+       <li >
+        <label for="stars-{{$rate}}">
+            <input type="checkbox" id="stars-{{$rate}}"
+            name="filter[rate][]"
+            value="{{$rate}}"
+            @if (in_array($rate,$checked))
+            checked
+            @endif>
+            {{$rate}}stars
+        </label>
+       </li>
+        @endforeach
+          <button type="submit"  class="btn btn-primary"> filter</button>
+        </form>
     </ul>
-  </div>
+</div>
 
   <a href="{{Route('search')}}"><button type="submit" class="btn btn-primary">Search</button></a> 
 
-    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      latest
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
 
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
+
+
+<form method="get" action="{{URL::current()}}">
+    <button type="submit"  name="latest" class="btn btn-primary ">latest</button>
+</form>
+
   </div>
     </div>
+
+
+
+
+
+
 
 
     <!-- search -->
@@ -234,15 +264,12 @@
             
        
     
+
         <main class="py-4 row  ">
 
-        <div class="col-3 m-0 h-1000 bg-primary">
-            {{-- <ul class="list-group">
-                @foreach($catdata as data)
-                <li class="list-group-item">{{$data['Type']}}</li>
-               @endforeach
-              </ul> --}}
+        <div class="col-3 m-0  ">
 
+            
           </div>
 
 
