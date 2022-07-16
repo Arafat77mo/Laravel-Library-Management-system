@@ -26,6 +26,13 @@
         .nochecked{
             color:black;
         }
+        .category{
+            text-decoration: none;
+            color: black;
+        .fav:hover{
+          color: red;
+
+        }
     </style>
     {{-- font aswoame cdn --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -102,6 +109,99 @@
 
 
 
+
+
+
+
+
+
+        <!-- {{-- order by section start --}}
+
+
+            {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 me-5"   >
+                <button class="btn btn-primary me-md-2" type="button"   data-bs-toggle="modal" data-bs-target="#exampleModal">rate</button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <a href="">
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+
+                         </a>
+
+                         <a href="" class="m-2">
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star nochecked "></i>
+
+
+
+                         </a>
+
+                         <a href="" class="m-2">
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star nochecked "></i>
+                            <i class="fa-solid fa-star nochecked "></i>
+
+
+
+                         </a>
+
+                         <a href="" class="m-2">
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star checked "></i>
+                            <i class="fa-solid fa-star nochecked "></i>
+                            <i class="fa-solid fa-star nochecked "></i>
+                            <i class="fa-solid fa-star nochecked "></i>
+
+                         </a>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <button class="btn btn-primary me-md-2" type="button"   data-bs-toggle="modal" data-bs-target="#exampleModal">latest</button>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                          xzccccxzczsf
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div> --}}
+          {{-- order by section end --}} -->
+
+
+
+
 <!-- Example single danger button -->
 <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 me-5">
     <p class="pt-2">ordered by </p>
@@ -110,32 +210,61 @@
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       rate
     </button>
+
     <ul class="dropdown-menu">
+        <form method="get" action="{{URL::current()}}">
       <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
+
 
       
 
+
+      @foreach (range(1,5) as $rate)
+       @php
+         $checked =[];
+         if(isset($_GET['filter'])){
+            $checked =$_GET['filter'];
+
+         }
+       @endphp
+       <li >
+        <label for="stars-{{$rate}}">
+            <input type="checkbox" id="stars-{{$rate}}"
+            name="filter[rate][]"
+            value="{{$rate}}"
+            @if (in_array($rate,$checked))
+            checked
+            @endif>
+            {{$rate}}stars
+        </label>
+       </li>
+        @endforeach
+          <button type="submit"  class="btn btn-primary"> filter</button>
+        </form>
     </ul>
-  </div>
+</div>
 
   <a href="{{Route('search')}}"><button type="submit" class="btn btn-primary">Search</button></a>
 
-    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      latest
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
 
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
+
+
+<form method="get" action="{{URL::current()}}">
+    <button type="submit"  name="latest" class="btn btn-primary ">latest</button>
+</form>
+
   </div>
     </div>
 
 
+
+
+
+
+
+
     <!-- search -->
+
 
 
 
@@ -154,6 +283,18 @@
 
                 </ul>
               </div>
+
+    
+            
+       
+    
+
+        <main class="py-4 row  ">
+
+        <div class="col-3 m-0  ">
+
+            
+
           </div>
 
 

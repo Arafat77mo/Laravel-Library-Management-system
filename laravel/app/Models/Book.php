@@ -9,10 +9,29 @@ class Book extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'title',
-        'price',
-        'description',
-        'rate'
-    ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+    public function comment(){
+
+        return $this->belongsTo(comment::class);
+        
+        
+            }
+   
+
 }

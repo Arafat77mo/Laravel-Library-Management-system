@@ -11,8 +11,8 @@ class ProfileController extends Controller
     public function index()
     {
         // $users = Auth::user();
-        // $users = user::where('id',Auth::id())->get();
-        $users = user::all();
+        $users = user::where('id',Auth::id())->get();
+        // $users = user::all();
         // return $users;
         return view('user.index',compact('users'));
     }
