@@ -3,17 +3,25 @@
 
 <div class ="container text-center ">
 
+    <div class="row">
+        <div class="filter-list">
+          <h3>Filter</h3>
+          <button class="btn btn-default filter-button active" data-filter="all">All</button>
+          <button class="btn btn-default filter-button" data-filter="Classics">classics</button>
+          <button class="btn btn-default filter-button" data-filter="Action">action</button>
+        </div>
+      </div>
 
 
 
 
 
-
-<div class="row col  ">
+<div class="row col ">
 
 @foreach ($data as $book)
 
-
+<div class="card col-4 m-1 product filter " style="width: 18rem;">
+    <a href=""><img src="https://fakeimg.pl/350x200/ff0000,128/000,255" class="card-img-top" alt="..."> </a>
 
 
 <div class="card col-4 m-1 " style="width: 18rem;">
@@ -22,7 +30,7 @@
     <div class="card-body">
       <h5 class="card-title">{{$book['title']}}</h5>
 
-      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae quidem ut maxime eos ex error animi, beatae aspernatur perferendis ratione ea delectus impedit labore, totam odio quia, perspiciatis culpa ipsum.</p>
+      <p class="card-text">{{$book['description']}}</p>
 
          <div class="row justify-content-between">
          <p style="color: maroon" class="col-5 fw-bold">rate {{$book['rate']}}  stars</p>
@@ -40,7 +48,7 @@
         <input type="hidden" value="1" name="quantity">
         <button class="col-6 btn btn-warning" type="submit" >Addtocart</button>
       </form>
-
+     
       {{-- <button class="col-5 btn btn-warning " type="submit">Add to cart</button> --}}
       </div>
 
@@ -58,12 +66,31 @@
 </div>
 
 
-
-
-
-
-
 @endsection
 
+<script>
+    $(document).ready(function () {
+
+$(".filter-button").click(function () {
+  var value = $(this).attr('data-filter');
+
+  if (value == "all") {
+
+    $('.filter').show('1000');
+  } else {
+
+    $(".filter").not('.' + value).hide('3000');
+    $('.filter').filter('.' + value).show('3000');
+
+  }
 
 
+  if ($(".filter-button").removeClass("active")) {
+    $(this).removeClass("active");
+  }
+  $(this).addClass("active");
+
+});
+
+});
+</script>
