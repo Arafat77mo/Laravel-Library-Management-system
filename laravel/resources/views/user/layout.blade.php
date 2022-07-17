@@ -29,6 +29,9 @@
         .category{
             text-decoration: none;
             color: black;
+        .fav:hover{
+          color: red;
+
         }
     </style>
     {{-- font aswoame cdn --}}
@@ -40,9 +43,12 @@
             <div class="container ">
 
                 {{-- left side in navbar --}}
+                <a class="navbar-brand" href="{{ route('getprofile')}}">
+                  my Profile
+              </a>
                 <a class="navbar-brand me-4" href="{{route('home')}}"> Mktabty</a>
 
-                <a class="navbar-brand me-4 " href="{{ url('/') }}">
+                <a class="navbar-brand me-4 " href="{{ route('cart.list') }}">
                     {{ config('app.name ', 'My books') }}
                 </a>
                 <a class="navbar-brand me-4" href="{{ url('/') }}">
@@ -110,6 +116,9 @@
 
 
 
+
+
+
 <!-- Example single danger button -->
 <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 me-5">
     <p class="pt-2">ordered by </p>
@@ -122,6 +131,7 @@
     <ul class="dropdown-menu">
         <form method="get" action="{{route('home')}}">
       <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
+
 
       @foreach (range(1,5) as $rate)
        @php
@@ -148,6 +158,7 @@
     </ul>
 </div>
 
+  <a href="{{Route('search')}}"><button type="submit" class="btn btn-primary">Search</button></a>
 
 
 
@@ -164,11 +175,26 @@
 
 
 
+
+
+    <!-- search -->
+
+
+
+
+
+
+
+
+
+
+
+
         <main class="py-4 row  ">
 
         <div class="col-3 m-4 fs-4 ">
 
-        
+
 
 
 
@@ -181,6 +207,9 @@
 
                 </ul>
               </div>
+
+
+
 
 
 

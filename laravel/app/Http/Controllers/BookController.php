@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Book_Category;
 use  App\Models\Book;
+use  App\Models\author;
+ use App\Models\comment;
 use Illuminate\Http\Request;
+use App\Models\Book_Category;
 
 class BookController extends Controller
 {
@@ -53,22 +55,7 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showcat($id)
-    {
    
-
-
-
-            $catigory = Book_Category::where('id',$id)->first();
-             $catbooks=Book::where('category_id', $catigory->id)->paginate(2);
-             return view ('user.catigory',['catbookdata'=>$catbooks]);
-            //  return response()->json( $catbooks);
-
-
-
-
-
-    }
 
 
 
@@ -90,6 +77,17 @@ class BookController extends Controller
      * Display the specified resource.
      *
 
+
+
+
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+
+
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -126,5 +124,13 @@ class BookController extends Controller
     }
 
 
+
+    public function showcat($id)
+    {
+            $category = Book_Category::where('id',$id)->first();
+             $catbooks=Book::where('category_id', $category->id)->paginate(2);
+             return view ('user.category',['catbookdata'=>$catbooks]);
+            //  return response()->json( $catbooks);
+    }
 
 }
