@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Providers;
+use App\Models\Book_Category;
+use App\Models\Book;
 use Illuminate\Support\Facades\Schema;
 
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\ServiceProvider;
 // to make pagination
@@ -29,6 +32,24 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
        Paginator::useBootstrap();
+
+
+
+
+    // view()->composer('user.layout',function($view){
+    //     $view->with('user',Auth::user());
+
+    //    });
+
+  view()->composer('user.layout',function($view){
+        $view->with('user',Book_Category::get());
+
+       });
+
+
+
+
+
 
      }
 }
