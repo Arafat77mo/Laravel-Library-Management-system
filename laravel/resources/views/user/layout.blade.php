@@ -270,7 +270,7 @@
 
 
 
-        <main class="py-4 row  ">
+        <main class="row  ">
 
         <div class="col-3 m-4">
 
@@ -283,24 +283,19 @@
 
                 </ul>
               </div>
-
+            </div>
     
             
        
     
 
-        <main class="py-4 row  ">
+        
 
-        <div class="col-3 m-0  ">
+        <div class="col-8 m-0  ">
 
             
 
-          </div>
-
-
-
-
-             <div class="col-8">
+          
             @yield('content')
             </div>
 
