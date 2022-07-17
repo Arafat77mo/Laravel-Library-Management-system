@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Book_Category;
 use  App\Models\Book;
 use  App\Models\author;
-
+ use App\Models\comment;
 use Illuminate\Http\Request;
+use App\Models\Book_Category;
 
 class BookController extends Controller
 {
@@ -86,6 +86,8 @@ class BookController extends Controller
      */
     public function show($id)
     {
+
+        
     }
 
     /**
@@ -120,5 +122,13 @@ class BookController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showcat($id)
+    {
+            $category = Book_Category::where('id',$id)->first();
+             $catbooks=Book::where('category_id', $category->id)->paginate(2);
+             return view ('user.category',['catbookdata'=>$catbooks]);
+            //  return response()->json( $catbooks);
     }
 }

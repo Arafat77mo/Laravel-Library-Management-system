@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Providers;
-use App\Models\Book_Category;
 use App\Models\Book;
 use Illuminate\Support\Facades\Schema;
 
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\ServiceProvider;
 // to make pagination
 use Illuminate\Pagination\Paginator;
+use App\Models\Book_Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,19 +34,19 @@ class AppServiceProvider extends ServiceProvider
        Paginator::useBootstrap();
 
        view()->composer('user.layout',function($view){
-        $view->with('cat',Book_Category::all());
 
-       });
-
-
-       view()->composer('user.layout',function($viewe){
-        $viewe->with('rate',Book::all());
+        $view->with('user',Book_Category::get());
 
        });
 
 
 
-     
+
+
+
+
+
+
 
 
      }

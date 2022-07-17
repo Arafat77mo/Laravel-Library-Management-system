@@ -49,7 +49,7 @@
                 <a class="navbar-brand me-4" href="{{route('home')}}"> Mktabty</a>
 
                 <a class="navbar-brand me-4 " href="{{ route('cart.list') }}">
-                    {{ config('app.name ', 'My books') }}
+                    My books
                 </a>
                 <a class="navbar-brand me-4" href="{{ url('/') }}">
                     {{-- {{ config('app.name', 'favorites') }} --}}
@@ -115,6 +115,8 @@
 
 
 
+        <!-- {{-- order by section start --}}
+
 
 
 
@@ -131,6 +133,10 @@
     <ul class="dropdown-menu">
         <form method="get" action="{{route('home')}}">
       <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
+
+
+
+
 
       @foreach (range(1,5) as $rate)
        @php
@@ -185,10 +191,20 @@
 
         <main class="py-4 row  ">
 
-        <div class="col-3 m-0  ">
+        <div class="col-3 m-4">
+
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                    @foreach ($user as $bookuser)
+                  <li class="list-group-item"><a href="{{url('category/'.$bookuser->id)}}">  {{$bookuser->type}}</a></li>
+                  @endforeach
+                  {{-- <li class="list-group-item"><strong>Joined: </strong>{{$user->created_at->diffForHumans()}}</li> --}}
+
+                </ul>
+              </div>
 
 
-          </div>
+        </div>
 
 
 
