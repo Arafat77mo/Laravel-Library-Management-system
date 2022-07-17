@@ -37,7 +37,17 @@ class AppServiceProvider extends ServiceProvider
 
         $view->with('user',Book_Category::get());
 
+
+        
+
        });
+
+
+
+
+
+
+
 
 
 

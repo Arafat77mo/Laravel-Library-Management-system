@@ -19,8 +19,11 @@ class CommentController extends Controller
     public function index()
     {
 
+
         // return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]);
         // return  $comments ;
+
+
     }
     /**
      * Show the form for creating a new resource.
@@ -33,6 +36,8 @@ class CommentController extends Controller
 
 
    return view('comment.create');
+
+
 
 
     }
@@ -56,13 +61,14 @@ class CommentController extends Controller
         $user->comment = $request->post('comment');
         $user->user_id = Auth::id();
         $user->book_id = $request->post('book_id');
-        $user->save(); 
+        $user->save();
 
 
 
         return redirect()->back();
    }
 //
+
     /**
      * Display the specified resource.
      *

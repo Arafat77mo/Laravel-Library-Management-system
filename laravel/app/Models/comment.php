@@ -17,7 +17,14 @@ class comment extends Model
 
 public function book(){
 
+
     return $this->belongsTo(Book::class);
+
+
+
+
+
+
 
 
         }
@@ -26,6 +33,8 @@ public function book(){
 public function user(){
 
    return $this->belongsTo(User::class);
+
+
 
 
                 }

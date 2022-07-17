@@ -138,6 +138,8 @@
 
 
 
+
+
       @foreach (range(1,5) as $rate)
        @php
          $checked =[];
@@ -189,7 +191,8 @@
 
 
 
-        <main class="py-4 row  ">
+
+        <main class="row  ">
 
         <div class="col-3 m-4">
 
@@ -202,14 +205,22 @@
 
                 </ul>
               </div>
-
-
-        </div>
-
+            </div>
 
 
 
-             <div class="col-8">
+
+
+
+
+
+      
+
+        <div class="col-8 m-0  ">
+
+
+
+
             @yield('content')
             </div>
 
