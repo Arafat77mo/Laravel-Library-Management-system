@@ -28,7 +28,7 @@
         }
         .category{
             text-decoration: none;
-            color: black;
+            color: black;}
         .fav:hover{
           color: red;
 
@@ -140,6 +140,9 @@
 
 
 
+
+
+
       @foreach (range(1,5) as $rate)
        @php
          $checked =[];
@@ -211,13 +214,7 @@
 
 
 
-
-
-
-      
-
         <div class="col-8 m-0  ">
-
 
 
 

@@ -20,9 +20,14 @@ class CommentController extends Controller
     {
 
 
+
         // return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]);
         // return  $comments ;
 
+
+
+        // return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]);
+        // return  $comments ;
 
     }
     /**
@@ -36,6 +41,9 @@ class CommentController extends Controller
 
 
    return view('comment.create');
+
+
+
 
 
 
@@ -65,10 +73,13 @@ class CommentController extends Controller
 
 
 
+
+
+
+
         return redirect()->back();
    }
 //
-
     /**
      * Display the specified resource.
      *

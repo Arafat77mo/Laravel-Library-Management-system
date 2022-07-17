@@ -12,7 +12,9 @@
 
 
 
-<div class="row col ">
+
+
+<div class="row">
 
 
 @foreach ($data as $book)

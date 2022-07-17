@@ -33,6 +33,11 @@ Route::get('/home', [BookController::class, 'index'])->name('home')->middleware(
 
 
 
+Route::get('/search', [searchController::class, 'search'])->name('search')->middleware('auth');
+Route::post('/search', [searchController::class, 'getSearch'])->name('getSearch')->middleware('auth');
+
+
+
 
 Route::get('/search', [searchController::class, 'search'])->name('search')->middleware('auth');
 Route::post('/search', [searchController::class, 'getSearch'])->name('getSearch')->middleware('auth');
@@ -57,7 +62,6 @@ Route::group(['prefix' => 'admin'], function () {
 Route::resource('comment','App\Http\Controllers\CommentController')->middleware('auth')->middleware('auth');
 
 
-////// cart
 
 
 
@@ -66,6 +70,7 @@ Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store')->m
 Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update')->middleware('auth');
 Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove')->middleware('auth');
 Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear')->middleware('auth');
+
 
 // update profile
 Route::get('myprofile',[ProfileController::class,'index'])->name('getprofile')->middleware('auth');

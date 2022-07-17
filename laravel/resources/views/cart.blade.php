@@ -87,8 +87,6 @@
             </div>
         </main>
 
-
-
         {!! Form::open(['route' => 'comment.store']) !!}
         <label  class='ms-3' for="comment">Comments:</label>
 
@@ -117,9 +115,6 @@
 
         <h6 class="card-subtitle mb-2 text-muted m-5">{{$comment['comment']}}</h6>
 
-
-
-        {!! Form::open(['route' => ['comment.destroy',$comment->user_id],'method' => 'delete']) !!}
 
         {!! Form::open(['route' => ['comment.destroy',$comment->id],'method' => 'delete']) !!}
           <button type="submit" class="btn btn-danger">Delete</button>
