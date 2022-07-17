@@ -1,15 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Book;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\comment;
 
-use Illuminate\Support\Facades\Auth;
-
-class CommentController extends Controller
+class WishlistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,23 +12,18 @@ class CommentController extends Controller
      */
     public function index()
     {
-         
-        // return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]); 
-        // return  $comments ; 
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
-
     {
-
-
-   return view('comment.create');
-
- 
+        //
+        return view('favorite.create');
     }
 
     /**
@@ -43,27 +32,20 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        $validated = $request->validate([
-            'comment' => 'required'
-        ]);
-        // Auth::user()->comments()->create($request->all());  
-    $user = new comment();
-        // dd($request);
-        $user->comment = $request->post('comment');
-        $user->user_id = Auth::id();
-        $user->book_id = $request->post('book_id');
-        $user->save();
-        $comment=comment::all();
-        // dd($comment);
-        // return view("comment.create",['comments'=>$comment]);
-        return view('comment.create',compact('comment'));
+            // if(!auth()->user()->wishlistHas(request('bookId'))){
+            //     auth()->user()->wishlist()->attach(request('bookId'));
+            // }
 
+            if(!auth()->User()->wishlistHas(request('bookId'))){
+                auth()->User()->wisthlist()->attach(request('bookId'));
+            }
 
-        // return redirect()->back(); 
-   }
-//    
+            // dd(request('bookId'));
+
+}
+
     /**
      * Display the specified resource.
      *
@@ -71,10 +53,9 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { 
-        $comment=comment::all();
-        return view("comment.create",['comments'=>$comment]);  
-      }
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -105,10 +86,8 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($bookId)
     {
-        $comments =comment::find($id)->delete();
-
-        return redirect()->back(); 
+        auth()->user()->wishlist()->detach($bookId);
     }
 }

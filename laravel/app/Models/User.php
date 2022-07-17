@@ -46,11 +46,19 @@ class User extends \TCG\Voyager\Models\User
     ];
 
 
+
     public function comment(){
 
         return $this->hasMany(comment::class);
-        
-        
-            }
+            
+     }
    
+    public function wishlist(){
+        return $this->belongsToMany(Book::class,'wish_lists')->withTimestamps();
+    }
+
+    public function wishlistHas($bookId){
+        return self::wishlist()->where('bookId',$bookId)->exists();
+    }
+
 }

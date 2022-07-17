@@ -38,10 +38,10 @@
                 {{-- left side in navbar --}}
                 <a class="navbar-brand me-4" href="{{route('home')}}"> Mktabty</a>
 
-                <a class="navbar-brand me-4 " href="{{ url('/') }}">
+                <a class="navbar-brand me-4 " href="{{ url('home') }}">
                     {{ config('app.name ', 'My books') }}
                 </a>
-                <a class="navbar-brand me-4" href="{{ url('/') }}">
+                <a class="navbar-brand me-4" href="{{ route('home') }}">
                     {{-- {{ config('app.name', 'favorites') }} --}}
                     favorites
                 </a>
@@ -97,32 +97,17 @@
         </nav>
 
 
-
-
-
-
-
-
-        <main  >
-
-
-
-
-
-
-
+        <main>
                 @yield('content')
 
 
-            </main>
+        </main>
 
-            <div class="col-8">
-                @yield('cooment')
-                </div>
-
+            {{-- <div class="col-8">
+                    @yield('cooment')
+            </div>
                 
-
-
+        </main> --}}
 
 
 

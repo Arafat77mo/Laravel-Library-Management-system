@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\comment;
+use App\Models\Favorite;
+use App\Model\Book;
+use Illuminate\Support\Facades\DB;
+use Auth;
 
-use Illuminate\Support\Facades\Auth;
-
-class CommentController extends Controller
+class FavoriteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,23 +17,20 @@ class CommentController extends Controller
      */
     public function index()
     {
-         
-        // return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]); 
-        // return  $comments ; 
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
-
     {
+       
+        $favorites = DB::table('favorites')->where('user_id', '=', Auth::id())->get();    
+        return view('favorite.create',compact('favorites'));
 
-
-   return view('comment.create');
-
- 
     }
 
     /**
@@ -45,25 +41,29 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'comment' => 'required'
-        ]);
-        // Auth::user()->comments()->create($request->all());  
-    $user = new comment();
+
+        // dd($request->all());
         // dd($request);
-        $user->comment = $request->post('comment');
-        $user->user_id = Auth::id();
-        $user->book_id = $request->post('book_id');
-        $user->save();
-        $comment=comment::all();
-        // dd($comment);
-        // return view("comment.create",['comments'=>$comment]);
-        return view('comment.create',compact('comment'));
+        // dd(Auth::id());
 
+        //-------validation
 
-        // return redirect()->back(); 
-   }
-//    
+        //-------store
+        $favorite =new Favorite();
+        $favorite->user_id=Auth::id();
+        $favorite->book_id=$request->id;
+        $favorite->discription=$request->description;
+        $favorite->price=$request->price;
+        $favorite->title=$request->title;
+        $favorite->rate=$request->rate;
+        $favorite->image=$request->image;
+        $favorite->save();
+
+        //-------redirect
+
+        return redirect()->back();
+    }
+
     /**
      * Display the specified resource.
      *
@@ -71,10 +71,9 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { 
-        $comment=comment::all();
-        return view("comment.create",['comments'=>$comment]);  
-      }
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -107,8 +106,7 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        $comments =comment::find($id)->delete();
-
-        return redirect()->back(); 
+        Favorite::find($id)->delete();
+        return redirect()->back();
     }
 }

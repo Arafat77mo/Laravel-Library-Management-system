@@ -34,16 +34,22 @@ Route::get('/home', [BookController::class, 'index'])->name('home')->middleware(
 
 Route::get('/home', [BookController::class, 'index'])->name('home');
 
+
 Route::get('/search', [searchController::class, 'search'])->name('search')->middleware('auth');
 Route::post('/search', [searchController::class, 'getSearch'])->name('getSearch')->middleware('auth');
 
 Route::resource('show','App\Http\Controllers\BookController')->middleware('auth');
 
 
+Route::post('home/stores',[BookController::class,'store'])->name('books.store');
+Route::get('/home/show', [BookController::class, 'show'])->name('home_show');
+
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
 Route::resource('comment','App\Http\Controllers\CommentController')->middleware('auth');
 
 
@@ -61,3 +67,10 @@ Route::get('getprofile/{id}',[ProfileController::class,'edit'])->name('updatepro
 Route::put('updateprof/{id}',[ProfileController::class,'update'])->name('updatee')->middleware('auth');
 
 Route::get('category/{id}', [BookController::class, 'showcat'])->middleware('auth');
+
+
+
+
+
+Route::resource('favorites','App\Http\Controllers\favoriteController');
+
