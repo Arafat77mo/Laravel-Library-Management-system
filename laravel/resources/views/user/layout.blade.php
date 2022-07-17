@@ -26,6 +26,13 @@
         .nochecked{
             color:black;
         }
+        .category{
+            text-decoration: none;
+            color: black;
+        .fav:hover{
+          color: red;
+
+        }
     </style>
     {{-- font aswoame cdn --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -36,9 +43,12 @@
             <div class="container ">
 
                 {{-- left side in navbar --}}
+                <a class="navbar-brand" href="{{ route('getprofile')}}">
+                  my Profile
+              </a>
                 <a class="navbar-brand me-4" href="{{route('home')}}"> Mktabty</a>
 
-                <a class="navbar-brand me-4 " href="{{ url('/') }}">
+                <a class="navbar-brand me-4 " href="{{ route('cart.list') }}">
                     {{ config('app.name ', 'My books') }}
                 </a>
                 <a class="navbar-brand me-4" href="{{ url('/') }}">
@@ -100,7 +110,12 @@
 
 
 
-        {{-- order by section start --}}
+
+
+
+
+
+        <!-- {{-- order by section start --}}
 
 
             {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 me-5"   >
@@ -182,7 +197,8 @@
                       </div>
                     </div>
               </div> --}}
-          {{-- order by section end --}}
+          {{-- order by section end --}} -->
+
 
 
 
@@ -194,39 +210,90 @@
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       rate
     </button>
+
     <ul class="dropdown-menu">
+        <form method="get" action="{{URL::current()}}">
       <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
 
-      @foreach ($data as $rate)
-      <li><a class="dropdown-item" href="#">{{$rate['rate']}} stars</a></li>
-      @endforeach
 
+      
+
+
+      @foreach (range(1,5) as $rate)
+       @php
+         $checked =[];
+         if(isset($_GET['filter'])){
+            $checked =$_GET['filter'];
+
+         }
+       @endphp
+       <li >
+        <label for="stars-{{$rate}}">
+            <input type="checkbox" id="stars-{{$rate}}"
+            name="filter[rate][]"
+            value="{{$rate}}"
+            @if (in_array($rate,$checked))
+            checked
+            @endif>
+            {{$rate}}stars
+        </label>
+       </li>
+        @endforeach
+          <button type="submit"  class="btn btn-primary"> filter</button>
+        </form>
     </ul>
-  </div>
+</div>
+
+  <a href="{{Route('search')}}"><button type="submit" class="btn btn-primary">Search</button></a>
 
 
-    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      latest
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
 
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
+
+<form method="get" action="{{URL::current()}}">
+    <button type="submit"  name="latest" class="btn btn-primary ">latest</button>
+</form>
+
   </div>
     </div>
 
+
+
+
+
+
+
+
+    <!-- search -->
+
+
+
+
+
+
         <main class="py-4 row  ">
 
-        <div class="col-3 m-0 h-1000 bg-primary">
-            {{-- <ul class="list-group">
-                @foreach($catdata as data)
-                <li class="list-group-item">{{$data['Type']}}</li>
-               @endforeach
-              </ul> --}}
+        <div class="col-3 m-4">
+
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                    @foreach ($user as $bookuser)
+                  <li class="list-group-item"><a href="{{url('category/'.$bookuser->id)}}">  {{$bookuser->type}}</a></li>
+                  @endforeach
+                  {{-- <li class="list-group-item"><strong>Joined: </strong>{{$user->created_at->diffForHumans()}}</li> --}}
+
+                </ul>
+              </div>
+
+    
+            
+       
+    
+
+        <main class="py-4 row  ">
+
+        <div class="col-3 m-0  ">
+
+            
 
           </div>
 

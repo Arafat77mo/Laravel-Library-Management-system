@@ -116,9 +116,11 @@
 
             </main>
 
+            <div class="col-8">
+                @yield('cooment')
+                </div>
 
-
-
+                
 
 
 

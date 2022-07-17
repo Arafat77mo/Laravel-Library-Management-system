@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusToUsersTable extends Migration
+class AddForeignToBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class AddStatusToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('status')->default(1);
-        });        
+        Schema::table('books', function (Blueprint $table) {
+            $table -> foreignId('category_id') -> constrained('book_categories');
+            $table -> foreignId('author_id') -> constrained('authors');
+
+        });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -24,7 +27,7 @@ class AddStatusToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('books', function (Blueprint $table) {
             //
         });
     }
