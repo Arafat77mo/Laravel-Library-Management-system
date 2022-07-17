@@ -212,7 +212,7 @@
     </button>
 
     <ul class="dropdown-menu">
-        <form method="get" action="{{URL::current()}}">
+        <form method="get" action="{{route('home')}}">
       <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
 
 
@@ -249,7 +249,7 @@
 
 
 
-<form method="get" action="{{URL::current()}}">
+<form method="get" action="{{route('home')}}">
     <button type="submit"  name="latest" class="btn btn-primary ">latest</button>
 </form>
 

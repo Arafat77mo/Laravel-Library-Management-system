@@ -126,30 +126,3 @@
         
        
         
-        
-        @endsection
-        
-        
-        {{-- @section('comment')
-          <h5 class="card-title mx-4">{{'comment'}}</h5> 
-            @if (isset($comments))
-            
-        @foreach($comments as $comment) 
-        <div class="card m-5"  >
-        
-         
-        
-        
-           <h6 class="card-subtitle mb-2 text-muted">{{$comment['comment']}}</h6> 
-        
-        
-           {!! Form::open(['route' => ['comment.destroy',$comment->user_id],'method' => 'delete']) !!}
-              <button type="submit" class="btn btn-danger">Delete</button>
-              {!! Form::close() !!} 
-         </div> 
-           @endforeach  
-            @else <H1 class="mx-4" > you comment  can not publsh</H1> 
-          @endif 
-         
-         --}}
-    {{-- @endsection --}}
