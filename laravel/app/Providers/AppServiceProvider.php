@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 // to make pagination
 use Illuminate\Pagination\Paginator;
-use App\Models\Book_Category;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -40,21 +40,11 @@ class AppServiceProvider extends ServiceProvider
 
        });
 
-        $view->with('cat',Book_Category::all());
+       
 
-       });
-
-
-       view()->composer('user.layout',function($viewe){
-        $viewe->with('rate',Book::all());
-
-       });
+       
 
 
-
+       
      
-
-
-
-     }
-}
+}}
