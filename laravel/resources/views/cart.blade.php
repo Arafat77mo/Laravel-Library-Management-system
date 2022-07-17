@@ -35,17 +35,17 @@
                               <td>
                                 <a href="#">
                                   <p class="mb-2 md:ml-4">{{ $item->name }}</p>
-
+                                  
                                 </a>
                               </td>
                               <td class="justify-center mt-6 md:justify-end md:flex">
                                 <div class="h-10 w-28">
                                   <div class="relative flex flex-row w-full h-8">
-
+                                    
                                     <form action="{{ route('cart.update') }}" method="POST">
                                       @csrf
                                       <input type="hidden" name="id" value="{{ $item->id}}" >
-                                    <input type="number" name="quantity" value="{{ $item->quantity }}"
+                                    <input type="number" name="quantity" value="{{ $item->quantity }}" 
                                     class="w-6 text-center bg-gray-300" />
                                     <button type="submit" class="px-2 pb-2 ml-2 text-white bg-blue-500">update</button>
                                     </form>
@@ -63,11 +63,11 @@
                                   <input type="hidden" value="{{ $item->id }}" name="id">
                                   <button class="px-4 py-2 text-white bg-red-600">x</button>
                               </form>
-
+                                
                               </td>
                             </tr>
                             @endforeach
-
+                             
                           </tbody>
                         </table>
                         <div>
@@ -89,65 +89,65 @@
 
         {!! Form::open(['route' => 'comment.store']) !!}
         <label  class='ms-3' for="comment">Comments:</label>
-
+        
         <textarea class="form-control m-3 col-5" rows="5" id="comment" name="comment"></textarea>
-
-
+        
+        
         @foreach ($errors->all() as $error)
         <li class="text-danger">{{ $error }}</li>
         @endforeach
         <button type="submit" class="btn btn-primary ms-5" >Submit</button>
-
+        
         {!! Form::close() !!}
-
-
-        <h5 class="card-title mx-4 m-4">{{'comment'}}</h5>
-
-        @foreach($users as $user)
+        
+        
+        <h5 class="card-title mx-4 m-4">{{'comment'}}</h5> 
+       
+        @foreach($users as $user) 
         @endforeach
-        @foreach($comments as $comment)
+        @foreach($comments as $comment) 
         <div class="card m-5" >
-
-
+        
+        
           {{-- <h5 class="card-title mx-4 m-4">{{$user['name']}} : {{$user['created_at']}}</h5>  --}}
-          <h5 class="card-title mx-4 m-4">{{$comment->user->name}} : {{$comment->user->created_at}}</h5>
+          <h5 class="card-title mx-4 m-4">{{$comment->user->name}} : {{$comment->user->created_at}}</h5> 
 
-
-        <h6 class="card-subtitle mb-2 text-muted m-5">{{$comment['comment']}}</h6>
-
-
-        {!! Form::open(['route' => ['comment.destroy',$comment->id],'method' => 'delete']) !!}
+        
+        <h6 class="card-subtitle mb-2 text-muted m-5">{{$comment['comment']}}</h6> 
+        
+        
+        {!! Form::open(['route' => ['comment.destroy',$comment->user_id],'method' => 'delete']) !!}
           <button type="submit" class="btn btn-danger">Delete</button>
-          {!! Form::close() !!}
-        </div>
-        @endforeach
-
-
-
-
+          {!! Form::close() !!}  
+        </div> 
+        @endforeach  
+        
+       
+        
+        
         @endsection
-
-
+        
+        
         {{-- @section('comment')
-          <h5 class="card-title mx-4">{{'comment'}}</h5>
+          <h5 class="card-title mx-4">{{'comment'}}</h5> 
             @if (isset($comments))
-
-        @foreach($comments as $comment)
+            
+        @foreach($comments as $comment) 
         <div class="card m-5"  >
-
-
-
-
-           <h6 class="card-subtitle mb-2 text-muted">{{$comment['comment']}}</h6>
-
-
+        
+         
+        
+        
+           <h6 class="card-subtitle mb-2 text-muted">{{$comment['comment']}}</h6> 
+        
+        
            {!! Form::open(['route' => ['comment.destroy',$comment->user_id],'method' => 'delete']) !!}
               <button type="submit" class="btn btn-danger">Delete</button>
-              {!! Form::close() !!}
-         </div>
-           @endforeach
-            @else <H1 class="mx-4" > you comment  can not publsh</H1>
-          @endif
-
+              {!! Form::close() !!} 
+         </div> 
+           @endforeach  
+            @else <H1 class="mx-4" > you comment  can not publsh</H1> 
+          @endif 
+         
          --}}
     {{-- @endsection --}}
