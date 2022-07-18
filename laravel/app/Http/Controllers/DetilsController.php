@@ -38,14 +38,7 @@ class DetilsController extends Controller
      */
     public function store(Request $request)
     {
-        \Cart::add([
-            'id' => $request->id,
-            'name' => $request->name,
-            'price' => $request->price,
-            'quantity' => $request->quantity,
-        ]);
-            // return $request;
-        session()->flash('success', 'Product is Added to Cart Successfully !');
+       
 
         return redirect()->route('show.index');
     }
