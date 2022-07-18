@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,45 +20,56 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
-        .checked{
-            color:rgb(255, 208, 0);
+        .checked {
+            color: rgb(255, 208, 0);
 
         }
-        .nochecked{
-            color:black;
+
+        .nochecked {
+            color: black;
         }
         .category{
             text-decoration: none;
-            color: black;}
+
+            color: black;
+        }
+
         .fav:hover{
           color: red;
 
         }
     </style>
     {{-- font aswoame cdn --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar  navbar-expand-md navbar-dark  navbar-light bg-primary  shadow-sm">
             <div class="container ">
 
                 {{-- left side in navbar --}}
+
                 <a class="navbar-brand" href="{{ route('getprofile')}}">
                   my Profile
-              </a>
+                 </a>
                 <a class="navbar-brand me-4" href="{{route('home')}}"> Mktabty</a>
+
 
                 <a class="navbar-brand me-4 " href="{{ route('cart.list') }}">
                     My books
                 </a>
-                <a class="navbar-brand me-4" href="{{ url('/') }}">
+                <a class="navbar-brand me-4" href="{{ route('favorites.create') }}">
                     {{-- {{ config('app.name', 'favorites') }} --}}
                     favorites
                 </a>
-                   {{-- left side in navbar --}}
+                {{-- left side in navbar --}}
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -84,13 +96,14 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
@@ -105,23 +118,26 @@
                 </div>
             </div>
         </nav>
+    
+
+            <div class="btn-group">
+               
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ route('home') }}">All rates</a></li>
+
+                    {{-- @foreach ($data as $rate)
+                        <li><a class="dropdown-item" href="#">{{ $rate['rate'] }} stars</a></li>
+                    @endforeach --}}
+
+
+                </ul>
+            </div>
 
 
 
 
 
-
-
-
-
-
-        <!-- {{-- order by section start --}}
-
-
-
-
-
- Example single danger button -->
+ {{-- Example single danger button --> --}}
 <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 me-5">
     <p class="pt-2">ordered by </p>
 
@@ -133,12 +149,6 @@
     <ul class="dropdown-menu">
         <form method="get" action="{{route('home')}}">
       <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
-
-
-
-
-
-
 
 
 
@@ -168,10 +178,7 @@
     </ul>
 </div>
 
-  <a href="{{Route('search')}}"><button type="submit" class="btn btn-primary">Search</button></a>
-
-
-
+ <a href="{{Route('search')}}"><button type="submit" class="btn btn-primary">Search</button></a>
 
 <form method="get" action="{{route('home')}}">
     <button type="submit"  name="latest" class="btn btn-primary ">latest</button>
@@ -179,23 +186,11 @@
 
   </div>
     </div>
-
-
-
-
-
-
-
-
     <!-- search -->
 
 
+    <main class="row  ">
 
-
-
-
-
-        <main class="row  ">
 
         <div class="col-3 m-4">
 
@@ -204,28 +199,25 @@
                     @foreach ($user as $bookuser)
                   <li class="list-group-item"><a href="{{url('category/'.$bookuser->id)}}">  {{$bookuser->type}}</a></li>
                   @endforeach
-                  {{-- <li class="list-group-item"><strong>Joined: </strong>{{$user->created_at->diffForHumans()}}</li> --}}
 
                 </ul>
               </div>
+
+
+
             </div>
-
-
 
 
 
         <div class="col-8 m-0  ">
 
-
-
             @yield('content')
-            </div>
+        </div>
 
-        </main>
+    </main>
 
+        @yield('script')
 
-
-
-    </div>
 </body>
+
 </html>

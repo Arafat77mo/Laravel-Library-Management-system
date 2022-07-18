@@ -19,7 +19,7 @@
 
 
        <div class="row justify-content-between">
-       <p style="color: maroon" class="col-5 fw-bold">rate {{$book['rate']}}  stars</p>
+       <p style="color: maroon" class="col-5 fw-bold">rate {{$book['rate']}} stars</p>
         <a style="font-size: 33px;text-align:center " class=" col-12 "  href="" ><i class="fa-regular fa-heart fav"></i></a>
       </div>
 

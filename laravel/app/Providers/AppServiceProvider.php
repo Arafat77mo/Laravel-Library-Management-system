@@ -10,6 +10,7 @@ use Illuminate\Support\ServiceProvider;
 // to make pagination
 use Illuminate\Pagination\Paginator;
 use App\Models\Book_Category;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -34,8 +35,6 @@ class AppServiceProvider extends ServiceProvider
 
        view()->composer('user.layout',function($view){
 
-
-
         $view->with('user',Book_Category::get());
     });
     view()->composer('user.show',function($view){
@@ -45,29 +44,17 @@ class AppServiceProvider extends ServiceProvider
         $view->with('book',Book::get());
     });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
-
+         
 }
+}
+
+
+
+
+
+
+
+
+
+
+

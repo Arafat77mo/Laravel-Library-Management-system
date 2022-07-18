@@ -13,11 +13,11 @@ class AddForeignToBooksTable extends Migration
      */
     public function up()
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table -> foreignId('category_id') -> constrained('book_categories');
-            $table -> foreignId('author_id') -> constrained('authors');
+        // Schema::table('books', function (Blueprint $table) {
+        //     $table -> foreignId('category_id') -> constrained('book_categories');
+        //     $table -> foreignId('author_id') -> constrained('authors');
 
-        });
+        // });
     }
 
     /**
@@ -27,8 +27,8 @@ class AddForeignToBooksTable extends Migration
      */
     public function down()
     {
-        Schema::table('books', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('books', function (Blueprint $table) {
+        //     //
+        // });
     }
 }

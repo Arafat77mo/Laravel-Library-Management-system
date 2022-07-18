@@ -5,7 +5,11 @@ use  App\Models\Book;
 use  App\Models\author;
  use App\Models\comment;
 use Illuminate\Http\Request;
+
 use App\Models\Book_Category;
+
+use Auth;
+
 
 class BookController extends Controller
 {
@@ -16,7 +20,7 @@ class BookController extends Controller
      */
     public function index()
     {
-            // $bookdata=Book::all();
+           
 
             $catigories=Book_Category::select('type', 'id')->get();
 
@@ -44,6 +48,9 @@ class BookController extends Controller
                                   ,'catigory'=> $catigories]);
         //  return response()->json($bookdata);
 
+           return view ('user.book',['data'=>$bookdata,'catigory'=> $catigories]);
+      
+
     }
 
     /**
@@ -54,12 +61,8 @@ class BookController extends Controller
     public function showbycat($id)
     {
 
+
       
-
-
-
-
-
     }
 
     /**
@@ -70,7 +73,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -128,6 +131,5 @@ class BookController extends Controller
             $category = Book_Category::where('id',$id)->first();
              $catbooks=Book::where('category_id', $category->id)->paginate(2);
              return view ('user.category',['catbookdata'=>$catbooks]);
-            //  return response()->json( $catbooks);
     }
 }
