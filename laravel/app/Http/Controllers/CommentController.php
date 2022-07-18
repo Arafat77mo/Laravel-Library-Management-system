@@ -18,9 +18,17 @@ class CommentController extends Controller
      */
     public function index()
     {
-         
-        // return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]); 
-        // return  $comments ; 
+
+
+
+        // return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]);
+        // return  $comments ;
+
+
+
+        // return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]);
+        // return  $comments ;
+
     }
     /**
      * Show the form for creating a new resource.
@@ -34,7 +42,9 @@ class CommentController extends Controller
 
    return view('comment.create');
 
- 
+
+
+
     }
 
     /**
@@ -48,22 +58,34 @@ class CommentController extends Controller
         $validated = $request->validate([
             'comment' => 'required'
         ]);
+
         // Auth::user()->comments()->create($request->all());  
-    $user = new comment();
         // dd($request);
+        // Auth::user()->comments()->create($request->all());
+
+
+    $user = new comment();
         $user->comment = $request->post('comment');
         $user->user_id = Auth::id();
         $user->book_id = $request->post('book_id');
         $user->save();
         $comment=comment::all();
-        // dd($comment);
-        // return view("comment.create",['comments'=>$comment]);
+       
         return view('comment.create',compact('comment'));
 
 
+
         // return redirect()->back(); 
+
+
+
+
+
+
+        return redirect()->back();
+
    }
-//    
+//
     /**
      * Display the specified resource.
      *
@@ -71,9 +93,9 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { 
+    {
         $comment=comment::all();
-        return view("comment.create",['comments'=>$comment]);  
+        return view("comment.create",['comments'=>$comment]);
       }
 
     /**
@@ -109,6 +131,6 @@ class CommentController extends Controller
     {
         $comments =comment::find($id)->delete();
 
-        return redirect()->back(); 
+        return redirect()->back();
     }
 }

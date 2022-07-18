@@ -30,8 +30,10 @@
         }
         .category{
             text-decoration: none;
+
             color: black;
         }
+
         .fav:hover{
           color: red;
 
@@ -57,8 +59,7 @@
 
 
                 <a class="navbar-brand me-4 " href="{{ route('cart.list') }}">
-
-                    {{ config('app.name ', 'My books') }}
+                    My books
                 </a>
                 <a class="navbar-brand me-4" href="{{ route('favorites.create') }}">
                     {{-- {{ config('app.name', 'favorites') }} --}}
@@ -124,12 +125,15 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('home') }}">All rates</a></li>
 
-                    @foreach ($data as $rate)
+                    {{-- @foreach ($data as $rate)
                         <li><a class="dropdown-item" href="#">{{ $rate['rate'] }} stars</a></li>
-                    @endforeach
+                    @endforeach --}}
+
 
                 </ul>
             </div>
+
+
 
 
 
@@ -143,8 +147,11 @@
     </button>
 
     <ul class="dropdown-menu">
-        <form method="get" action="{{URL::current()}}">
+        <form method="get" action="{{route('home')}}">
       <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
+
+
+
 
       @foreach (range(1,5) as $rate)
        @php
@@ -173,7 +180,7 @@
 
  <a href="{{Route('search')}}"><button type="submit" class="btn btn-primary">Search</button></a>
 
-<form method="get" action="{{URL::current()}}">
+<form method="get" action="{{route('home')}}">
     <button type="submit"  name="latest" class="btn btn-primary ">latest</button>
 </form>
 
@@ -181,7 +188,9 @@
     </div>
     <!-- search -->
 
-        <main class="py-4 row  ">
+
+    <main class="row  ">
+
 
         <div class="col-3 m-4">
 
@@ -193,16 +202,15 @@
 
                 </ul>
               </div>
- 
-        <main class="py-4 row  ">
 
-        <div class="col-3 m-0  ">
 
-         
-        </div>
-    </div>
 
-        <div class="col-8">
+            </div>
+
+
+
+        <div class="col-8 m-0  ">
+
             @yield('content')
         </div>
 

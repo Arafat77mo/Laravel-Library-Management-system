@@ -1,19 +1,18 @@
 @extends('user.layout')
 @section('content')
 
-<div class="m-4 ms-5 d-flex justify-content-center" >
+
+<div class ="container text-center ">
 
 
-{{-- <div class="row col "> --}}
+<div class="row col my-5 ">
 @foreach ($data as $book)
 
-{!! Form::open(['route' => 'favorites.store']) !!}
-
-<div class="row col ">
 
     <div class="card col-4 mx-4 " style="width: 18rem;">
         <a href=""><img src="https://fakeimg.pl/350x200/ff0000,128/000,255" class="card-img-top" alt="..."> </a>
         <div class="card-body">
+        {!! Form::open(['route' => 'favorites.store']) !!}
         <h5 class="card-title">{{$book['title']}}</h5>
         {!! Form::hidden('title',$book['title'],['class'=>'form-control'])!!}
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -40,26 +39,21 @@
             <input type="hidden" value="1" name="quantity">
             <button class="col-6 btn btn-warning" type="submit" >Addtocart</button>
           </form>
-        
         </div>
-        </div>
+
     </div>
 </div>
 
-    
 
 
 @endforeach
 
 </div>
+</div>
 <div class="m-4 ms-5  aligns-items-center d-flex " >
     <p class="text-center">  {!!$data->links()!!}</p>
-
 </div>
 @endsection
-
-
-
 
 
 
