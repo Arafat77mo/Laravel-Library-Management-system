@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
 use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\comment;
 
-use Illuminate\Support\Facades\Auth;
-
-class CommentController extends Controller
+class DetilsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,36 +14,20 @@ class CommentController extends Controller
      */
     public function index()
     {
+        $comment=comment::all();
 
+        
+        return view("user.show",['comments'=>$comment]);   
+     }
 
-
-        // return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]);
-        // return  $comments ;
-
-
-
-        // return view('comment.create',['data'=>comment::whereUserId(Auth::id())->get()]);
-        // return  $comments ;
-
-    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
-
     {
-
-
-   return view('comment.create');
-
-
-
-
-
-
-
+        //
     }
 
     /**
@@ -58,28 +38,18 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'comment' => 'required'
+        \Cart::add([
+            'id' => $request->id,
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
         ]);
-        // Auth::user()->comments()->create($request->all());
+            // return $request;
+        session()->flash('success', 'Product is Added to Cart Successfully !');
 
+        return redirect()->route('show.index');
+    }
 
-
-    $user = new comment();
-        $user->comment = $request->post('comment');
-        $user->user_id = Auth::id();
-        $user->book_id = $request->post('book_id');
-        $user->save();
-
-
-
-
-
-
-
-        return redirect()->back();
-   }
-//
     /**
      * Display the specified resource.
      *
@@ -88,9 +58,8 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        // $comment=comment::all();
-        // return view("comment.create",['comments'=>$comment]);
-      }
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -123,8 +92,6 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        $comments =comment::find($id)->delete();
-
-        return redirect()->back();
+        //
     }
 }

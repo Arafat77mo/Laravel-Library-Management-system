@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DetilsController;
 
 
 
@@ -29,7 +30,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [BookController::class, 'index'])->name('home')->middleware('auth');
 
 
 Route::get('/home', [BookController::class, 'index'])->name('home');
@@ -37,7 +37,7 @@ Route::get('/home', [BookController::class, 'index'])->name('home');
 Route::get('/search', [searchController::class, 'search'])->name('search')->middleware('auth');
 Route::post('/search', [searchController::class, 'getSearch'])->name('getSearch')->middleware('auth');
 
-Route::resource('show','App\Http\Controllers\BookController')->middleware('auth');
+Route::resource('show','App\Http\Controllers\DetilsController')->middleware('auth');
 
 
 

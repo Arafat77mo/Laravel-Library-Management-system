@@ -10,10 +10,10 @@ class CartController extends Controller
 {
     public function cartList()
     {
-        $cartItems = \Cart::getContent();
+        $cartItems =\Cart::getContent();
         $comments = comment::all();
         $users = User::all();
-        
+
         //  return($cartItems);
         return view('cart', compact('cartItems','comments','users'));
 

@@ -39,7 +39,6 @@ class BookController extends Controller
          }
 
 
-
         //  $bookdata=Book::paginate(2);
            return view ('user.book',['data'=>$bookdata
                                   ,'catigory'=> $catigories]);

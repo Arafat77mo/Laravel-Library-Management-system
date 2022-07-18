@@ -6,6 +6,7 @@
 <div class="row col ">
 @foreach ($catbookdata as $mybook)
 <div class="card col-4 m-1 product filter " style="width: 18rem;">
+
     <a href=""><img src="https://fakeimg.pl/350x200/ff0000,128/000,255"  class="card-img-top" alt="..."> </a>
     <div class="card-body">
       <h5 class="card-title">{{$mybook['title']}}</h5>

@@ -1,50 +1,11 @@
 @extends('memory.nav')
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/app.js') }}" defer></script>
-</head>
-<body>
-<!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 me-5">
-    <p class="pt-2">ordered by </p>
 
-<div class="btn-group">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      rate
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
-
-      
-
-    </ul>
-  </div> -->
-
-<!-- 
-    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      latest
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{{route('home')}}">All rates</a></li>
-
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
-  </div>
-    </div> -->
-    <div class="container">
-    <div class="row">
+    <div class="container d-flex align-items-center justify-content-center ">
+    <div class="row  ">
         <div >
         <form action="" method="POST" class ="container text-center " style="margin-top:50px">
-            @csrf 
+            @csrf
             <input type="text" name="q" id="q">
             <button type="submit" class="btn btn-primary">Search</button>
         </form>
@@ -79,15 +40,22 @@
   </div>
 
         @endforeach
-</div>
-</div>
+
+        <div class="m-4 ms-5 d-flex justify-content-center" >
+            <p class="text-center">  {!!$books->links()!!}</p>
         </div>
-        
-    </div>
+
+
+
+</div>
 </div>
 
-</body>
-</html>
+ </div>
+
+
+
+
+
 @endsection
 
 
