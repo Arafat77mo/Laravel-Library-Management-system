@@ -1,8 +1,8 @@
-@extends('layouts.app')
-
+@extends('memory.nav')
 
 @section('cooment')
-<style>
+{{-- <style>
+
   *{
     margin: 0;
     padding: 0;
@@ -42,7 +42,9 @@
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
-  </style>
+  </style> --}}
+
+
 {!! Form::open(['route' => 'comment.store']) !!}
 <label  class='ms-3' for="comment">Comments:</label>
 
@@ -70,17 +72,11 @@
 {!! Form::close() !!}
 
 
+<h5 class="card-title mx-4">{{'comment'}}</h5>
+@if (isset($comments))
 
-@endsection
-
-
-@section('comment')
-
-    @if (isset($comments))
-
-@foreach($comments as $comment) 
+@foreach($comments as $comment)
 <div class="card m-5"  >
-
    {{-- <h5 class="card-title">{{$comment->user->name}}</h5>  --}}
    <h6 class="card-subtitle mb-2 text-muted">{{$comment['comment']}}</h6> 
    {!! Form::open(['route' => ['comment.destroy',$comment->user_id],'method' => 'delete']) !!}
@@ -90,3 +86,19 @@
    @endforeach   
   @endif 
 @endsection
+
+<h6 class="card-subtitle mb-2 text-muted m-5">{{$comment['comment']}}</h6> 
+
+
+{!! Form::open(['route' => ['comment.destroy',$comment->id],'method' => 'delete']) !!}
+  <button type="submit" class="btn btn-danger">Delete</button>
+  {!! Form::close() !!}
+</div>
+@endforeach
+@else <H1 class="mx-4" > you comment  can not publsh</H1>
+@endif
+
+
+@endsection
+
+

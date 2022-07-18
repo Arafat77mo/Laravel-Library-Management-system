@@ -1,11 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Book_Category;
 use Illuminate\Http\Request;
 
-class BookCategoryController extends Controller
+class WishlistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +12,7 @@ class BookCategoryController extends Controller
      */
     public function index()
     {
-        $catigory=Book_Category::all();
-
-        return view ('user.layout',['catdata'=>$catigory]);
+        //
     }
 
     /**
@@ -27,6 +23,7 @@ class BookCategoryController extends Controller
     public function create()
     {
         //
+        return view('favorite.create');
     }
 
     /**
@@ -35,10 +32,19 @@ class BookCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
-    }
+            // if(!auth()->user()->wishlistHas(request('bookId'))){
+            //     auth()->user()->wishlist()->attach(request('bookId'));
+            // }
+
+            if(!auth()->User()->wishlistHas(request('bookId'))){
+                auth()->User()->wisthlist()->attach(request('bookId'));
+            }
+
+            // dd(request('bookId'));
+
+}
 
     /**
      * Display the specified resource.
@@ -80,8 +86,8 @@ class BookCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($bookId)
     {
-        //
+        auth()->user()->wishlist()->detach($bookId);
     }
 }

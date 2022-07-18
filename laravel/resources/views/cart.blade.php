@@ -35,17 +35,17 @@
                               <td>
                                 <a href="#">
                                   <p class="mb-2 md:ml-4">{{ $item->name }}</p>
-                                  
+
                                 </a>
                               </td>
                               <td class="justify-center mt-6 md:justify-end md:flex">
                                 <div class="h-10 w-28">
                                   <div class="relative flex flex-row w-full h-8">
-                                    
+
                                     <form action="{{ route('cart.update') }}" method="POST">
                                       @csrf
                                       <input type="hidden" name="id" value="{{ $item->id}}" >
-                                    <input type="number" name="quantity" value="{{ $item->quantity }}" 
+                                    <input type="number" name="quantity" value="{{ $item->quantity }}"
                                     class="w-6 text-center bg-gray-300" />
                                     <button type="submit" class="px-2 pb-2 ml-2 text-white bg-blue-500">update</button>
                                     </form>
@@ -63,11 +63,11 @@
                                   <input type="hidden" value="{{ $item->id }}" name="id">
                                   <button class="px-4 py-2 text-white bg-red-600">x</button>
                               </form>
-                                
+
                               </td>
                             </tr>
                             @endforeach
-                             
+
                           </tbody>
                         </table>
                         <div>
@@ -86,4 +86,12 @@
                   </div>
             </div>
         </main>
-    @endsection
+
+      
+
+
+
+        @endsection
+
+
+       

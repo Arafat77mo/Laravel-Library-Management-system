@@ -44,4 +44,21 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    public function comment(){
+
+        return $this->hasMany(comment::class);
+            
+     }
+   
+    public function wishlist(){
+        return $this->belongsToMany(Book::class,'wish_lists')->withTimestamps();
+    }
+
+    public function wishlistHas($bookId){
+        return self::wishlist()->where('bookId',$bookId)->exists();
+    }
+
 }
