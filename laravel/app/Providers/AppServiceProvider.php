@@ -38,9 +38,6 @@ class AppServiceProvider extends ServiceProvider
         $view->with('user',Book_Category::get());
     });
     view()->composer('user.show',function($view){
-
-
-
         $view->with('book',Book::get());
     });
 

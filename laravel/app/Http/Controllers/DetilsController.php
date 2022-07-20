@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\comment;
+use App\Models\Book;
 
 class DetilsController extends Controller
 {
@@ -14,10 +15,8 @@ class DetilsController extends Controller
      */
     public function index()
     {
-        $comment=comment::all();
-
-        
-        return view("user.show",['comments'=>$comment]);   
+        // $comment=comment::all();
+        // return view("user.show",['comments'=>$comment]);   
      }
 
     /**
@@ -51,7 +50,7 @@ class DetilsController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -62,7 +61,16 @@ class DetilsController extends Controller
      */
     public function edit($id)
     {
-        //
+        // dd($id);
+        $books = Book::find($id);
+        $relation = Book::where('id',$id)->with('categories')->first();
+        // return $relation;
+        $category_id = $relation->category_id;
+        // return $category_id;
+        $relatedbooks = Book::where('category_id',$category_id)->get();
+        // return $relatedbooks;
+        $comments=comment::all();
+        return view('user.show',compact(['books','comments','relatedbooks']));
     }
 
     /**
@@ -74,7 +82,10 @@ class DetilsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $books = Book::findOrFail($id);
+        $books->rate = $request->rate;
+        $books->save();
+        return redirect()->route('home');
     }
 
     /**

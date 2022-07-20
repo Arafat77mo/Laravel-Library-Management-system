@@ -32,21 +32,19 @@
             <input type="hidden" value="1" name="quantity">
             <button class="col-6 btn btn-warning" type="submit" >Addtocart</button>
           </form>
-
         </div>
           <a href="{{route('show.index',$book->id)}}">  <button class="col-6 btn btn-info my-2" type="submit" >Detiles</button> </a></li>
     </div>
 </div>
-
-
-
 @endforeach
-
 </div>
 </div>
 <div class="m-4 ms-5  aligns-items-center d-flex " >
     <p class="text-center">  {!!$data->links()!!}</p>
 </div>
+
+
+
 @endsection
 
 

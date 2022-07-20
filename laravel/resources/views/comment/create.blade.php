@@ -1,6 +1,6 @@
-@extends('memory.nav')
+{{-- @extends('memory.nav')
 
-@section('cooment')
+@section('cooment') --}}
 {{-- <style>
 
   *{
@@ -45,7 +45,7 @@
   </style> --}}
 
 
-{!! Form::open(['route' => 'comment.store']) !!}
+{{-- {!! Form::open(['route' => 'comment.store']) !!}
 <label  class='ms-3' for="comment">Comments:</label>
 
 <textarea class="form-control m-3" rows="5" id="comment" name="comment"></textarea>
@@ -78,16 +78,16 @@
 @foreach($comments as $comment)
 <div class="card m-5"  >
    {{-- <h5 class="card-title">{{$comment->user->name}}</h5>  --}}
-   <h6 class="card-subtitle mb-2 text-muted">{{$comment['comment']}}</h6> 
+   {{-- <h6 class="card-subtitle mb-2 text-muted">{{$comment['comment']}}</h6> 
    {!! Form::open(['route' => ['comment.destroy',$comment->user_id],'method' => 'delete']) !!}
       <button type="submit" class="btn btn-danger">Delete</button>
       {!! Form::close() !!} 
  </div> 
    @endforeach   
   @endif 
-@endsection
+@endsection --}} --}}
 
-<h6 class="card-subtitle mb-2 text-muted m-5">{{$comment['comment']}}</h6> 
+{{-- <h6 class="card-subtitle mb-2 text-muted m-5">{{$comment['comment']}}</h6> 
 
 
 {!! Form::open(['route' => ['comment.destroy',$comment->id],'method' => 'delete']) !!}
@@ -99,6 +99,6 @@
 @endif
 
 
-@endsection
+@endsection --}}
 
 

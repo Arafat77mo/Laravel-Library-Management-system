@@ -8,20 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function author(){
 
         return $this-> belongsTo(author::class);
@@ -29,8 +15,6 @@ class Book extends Model
         
             }
 
-
-   
     public function comment(){
 
         return $this->hasMany(comment::class);
@@ -38,5 +22,11 @@ class Book extends Model
         
             }
    
+            // public function categories(){
+            //         return $this->belongsToMany(categorie::class, 'book_categories', 'book_id', 'categorie_id');
+            // }
 
+            public function categories(){
+                return $this->BelongsTo(categorie::class, 'category_id');
+            }
 }

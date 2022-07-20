@@ -112,7 +112,10 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $books = Book::findOrFail($id);
+      $books->rate = $request->rate;
+      $books->save();
+      return redirect()->route('show.index');
     }
 
     /**

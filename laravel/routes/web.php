@@ -35,13 +35,12 @@ Route::get('/home', [BookController::class, 'index'])->name('home');
 Route::get('/search', [searchController::class, 'search'])->name('search')->middleware('auth');
 Route::post('/search', [searchController::class, 'getSearch'])->name('getSearch')->middleware('auth');
 
-Route::resource('show','App\Http\Controllers\DetilsController')->middleware('auth');
-
+Route::get('edit/{id}',[DetilsController::class,'edit'])->name('show.index');
 
 Route::get('category/{id}', [BookController::class, 'showcat'])->middleware('auth');
 
 
-
+Route::put('books/{id}',[DetilsController::class, 'update'])->name('rating');
 
 Route::post('home/stores',[BookController::class,'store'])->name('books.store');
 Route::get('/home/show', [BookController::class, 'show'])->name('home_show');
@@ -68,8 +67,7 @@ Route::put('updateprof/{id}',[ProfileController::class,'update'])->name('updatee
 
 Route::get('category/{id}', [BookController::class, 'showcat'])->middleware('auth');
 
-
-
+Route::get('test',[ProfileController::class,'test']);
 
 
 Route::resource('favorites','App\Http\Controllers\favoriteController');

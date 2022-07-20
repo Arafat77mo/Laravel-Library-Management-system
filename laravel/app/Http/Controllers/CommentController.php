@@ -38,13 +38,7 @@ class CommentController extends Controller
     public function create()
 
     {
-
-
    return view('comment.create');
-
-
-
-
     }
 
     /**
@@ -56,13 +50,8 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'comment' => 'required'
+            'comment' => 'required|min:3|max:1000'
         ]);
-
-        // Auth::user()->comments()->create($request->all());  
-        // dd($request);
-        // Auth::user()->comments()->create($request->all());
-
 
     $user = new comment();
         $user->comment = $request->post('comment');
@@ -70,20 +59,8 @@ class CommentController extends Controller
         $user->book_id = $request->post('book_id');
         $user->save();
         $comment=comment::all();
-       
-        return view('comment.create',compact('comment'));
-
-
-
-        // return redirect()->back(); 
-
-
-
-
-
-
+        session()->flash('success', 'comment added Successfully !');
         return redirect()->back();
-
    }
 //
     /**
